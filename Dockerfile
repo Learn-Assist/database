@@ -8,6 +8,6 @@ RUN npm install
 
 COPY ./build .
 
-EXPOSE 80
+EXPOSE $PORT
 
 CMD [ "node", "index.js" ]

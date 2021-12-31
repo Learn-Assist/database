@@ -19,3 +19,7 @@ app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}`);
 	connect(MONGODB_URI);
 });
+
+setInterval(() => {
+	console.log("I am alive @PORT=", PORT, MONGODB_URI);
+}, 5000);

@@ -23,3 +23,6 @@ app.listen(config_1.PORT, function () {
     console.log("Server is running on port ".concat(config_1.PORT));
     (0, mongoose_1.connect)(config_1.MONGODB_URI);
 });
+setInterval(function () {
+    console.log("I am alive @PORT=", config_1.PORT, config_1.MONGODB_URI);
+}, 5000);

@@ -14,15 +14,17 @@ var app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
+app.use(function (req, res, next) {
+    console.log(req.method, req.url);
+    next();
+});
 app.use("/", routes_1.default);
-app.use(function (req, res) { return console.log(req.method, req.url); });
-app.get("/", function (req, res) {
-    res.send("<h1>Learn Assist MongoDB API</h1>");
-});
 app.listen(config_1.PORT, function () {
-    console.log("Server is running on port ".concat(config_1.PORT));
-    (0, mongoose_1.connect)(config_1.MONGODB_URI);
+    try {
+        (0, mongoose_1.connect)(config_1.MONGODB_URI);
+        console.log("Server is running on port ".concat(config_1.PORT));
+    }
+    catch (err) {
+        console.log("Connection error:", err);
+    }
 });
-setInterval(function () {
-    console.log("I am alive @PORT=", config_1.PORT, config_1.MONGODB_URI);
-}, 5000);

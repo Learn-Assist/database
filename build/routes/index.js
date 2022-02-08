@@ -40,4 +40,7 @@ router.post("/topic", topic.create);
 router.put("/user", user.update);
 router.put("/subject", subject.update);
 router.put("/topic", topic.update);
+router.get("/home", function (req, res) {
+    res.send("<h1>Learn Assist MongoDB API</h1>");
+});
 exports.default = router;

@@ -9,17 +9,17 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+	console.log(req.method, req.url);
+	next();
+});
 app.use("/", routes);
-app.use((req, res) => console.log(req.method, req.url));
 
-app.get("/", (req, res) => {
-	res.send("<h1>Learn Assist MongoDB API</h1>");
-});
 app.listen(PORT, () => {
-	console.log(`Server is running on port ${PORT}`);
-	connect(MONGODB_URI);
+	try {
+		connect(MONGODB_URI);
+		console.log(`Server is running on port ${PORT}`);
+	} catch (err) {
+		console.log("Connection error:", err);
+	}
 });
-
-setInterval(() => {
-	console.log("I am alive @PORT=", PORT, MONGODB_URI);
-}, 5000);

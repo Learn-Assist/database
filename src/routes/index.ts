@@ -22,4 +22,8 @@ router.put("/user", user.update);
 router.put("/subject", subject.update);
 router.put("/topic", topic.update);
 
+router.get("/home", (req, res) => {
+	res.send("<h1>Learn Assist MongoDB API</h1>");
+});
+
 export default router;

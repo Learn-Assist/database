@@ -54,7 +54,7 @@ var getById = function (req, res) {
 exports.getById = getById;
 var getBySubjectAndGrade = function (req, res) {
     Topic_1.default.find({
-        subject: req.query.subject,
+        subject: { $regex: new RegExp(req.query.subject, "i") },
         grade: parseInt(req.query.grade),
         lesson: parseInt(req.query.lesson),
     })

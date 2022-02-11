@@ -14,7 +14,7 @@ export const getById = (req: Request, res: Response) => {
 
 export const getBySubjectAndGrade = (req: Request, res: Response) => {
 	Topic.find({
-		subject: req.query.subject as string,
+		subject: { $regex: new RegExp(req.query.subject as string, "i") },
 		grade: parseInt(req.query.grade as any),
 		lesson: parseInt(req.query.lesson as any),
 	})

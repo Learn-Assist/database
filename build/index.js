@@ -18,6 +18,10 @@ app.use(function (req, res, next) {
     console.log(req.method, req.url);
     next();
 });
+app.use(function (req, res, next) {
+    console.log(req.method, req.url);
+    next();
+});
 app.use("/", routes_1.default);
 app.listen(config_1.PORT, function () {
     try {
